@@ -4,13 +4,17 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+  mode: 'development',
   entry: {
     app: ['./app/index.js'],
     vendor: ['jquery']
   },
   devtool: 'cheap-module-source-map',
   devServer: {
-    contentBase: './dist'
+    static: {
+     directory: path.join(__dirname, 'dist'),
+    },
+    compress: true
   },
   output: {
     path: path.join(__dirname, 'dist'),
